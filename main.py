@@ -47,7 +47,13 @@ def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the book list")
     # Finding all fiction books
     fiction_books = [book for book in book_list if book['genre'] == 'Fiction']
-    print (fiction_books)
+    # print (f'The number of fiction books is {len(fiction_books)}.')
+    nonfiction_books = [book for book in book_list if book['genre'] == 'Non Fiction']
+    # print (f'The number of Non-Fiction books is {len(nonfiction_books)}')
+    if len(fiction_books) > len(nonfiction_books):
+        print (f'There were more Fiction books on the Best Sellers List than Nonfiction books; {len(fiction_books)} Fiction books compared to {len(nonfiction_books)} Nonfiction books.')
+    else: 
+        print (f'There were more Nonfiction books on the Best Sellers List than Fiction books; {len(nonfiction_books)} Nonfiction books compared to {len(fiction_books)} Fiction books.')
 
 
 def analysis_three(book_list):
