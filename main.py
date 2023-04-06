@@ -1,5 +1,5 @@
 from data import data_list
-
+from collections import Counter
 
 def run_analysis(books):
     print('')
@@ -45,19 +45,25 @@ def analysis_one(book_list):
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the book list")
-    # Finding all fiction books
+    # Finding all fiction and nonfiction books
     fiction_books = [book for book in book_list if book['genre'] == 'Fiction']
-    # print (f'The number of fiction books is {len(fiction_books)}.')
     nonfiction_books = [book for book in book_list if book['genre'] == 'Non Fiction']
-    # print (f'The number of Non-Fiction books is {len(nonfiction_books)}')
     if len(fiction_books) > len(nonfiction_books):
         print (f'There were more Fiction books on the Best Sellers List than Nonfiction books; {len(fiction_books)} Fiction books compared to {len(nonfiction_books)} Nonfiction books.')
     else: 
         print (f'There were more Nonfiction books on the Best Sellers List than Fiction books; {len(nonfiction_books)} Nonfiction books compared to {len(fiction_books)} Fiction books.')
 
-
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the book list, and how many times it has appeared")
+    list_of_book_titles = [book['name'] for book in book_list]
+    for book in book_list:
+        print (book['name'])
+    c = Counter(list_of_book_titles)
+    print(c.most_common(1))
+
+
+    # print (list_of_book_titles)
+    # print (len(list_of_book_titles))
 
 
 
