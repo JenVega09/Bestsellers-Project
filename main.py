@@ -1,4 +1,5 @@
 from data import data_list
+from datacopy import data_list2
 
 def run_analysis(books):
     print('')
@@ -17,6 +18,9 @@ def run_analysis(books):
     print("*******************************************************************")
     print('')
     analysis_three(books)
+    print('')
+    print("*******************************************************************")
+    print('')
 
 def example_analysis(book_list):
     print("Analysis of which book had the highest price in 2016")
@@ -29,7 +33,7 @@ def example_analysis(book_list):
     highest_cost_book = max(books_2016, key=lambda book: book['price'])
     # Print that book's name & price to terminal
     print(
-        f"The most expensive book in 2016 was {highest_cost_book['name']} with a price of {highest_cost_book['price']}")
+        f"\nThe most expensive book in 2016 was {highest_cost_book['name']} with a price of {highest_cost_book['price']}")
 
 def analysis_one(book_list):
     print("Analysis of which book had the lowest number of reviews in 2018")
@@ -38,7 +42,7 @@ def analysis_one(book_list):
     # Calculating the minimum number of reviews from the books_2018 list
     lowest_review = min(books_2018, key = lambda book: book['number_of_reviews'])
     # Printing out the book with the lowest number of reviews in 2018
-    print (f"The book with the lowest number of reviews in 2018 was {lowest_review['name']} with {lowest_review['number_of_reviews']} reviews.")
+    print (f"\nThe book with the lowest number of reviews in 2018 was {lowest_review['name']} with {lowest_review['number_of_reviews']} reviews.")
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the book list")
@@ -46,7 +50,7 @@ def analysis_two(book_list):
     fiction_books = [book for book in book_list if book['genre'] == 'Fiction']
     nonfiction_books = [book for book in book_list if book['genre'] == 'Non Fiction']
     if len(fiction_books) > len(nonfiction_books):
-        print (f'There were more Fiction books on the Best Sellers List than Nonfiction books; {len(fiction_books)} Fiction books compared to {len(nonfiction_books)} Nonfiction books.')
+        print (f'\nThere were more Fiction books on the Best Sellers List than Nonfiction books; {len(fiction_books)} Fiction books compared to {len(nonfiction_books)} Nonfiction books.')
     else: 
         print (f'There were more Nonfiction books on the Best Sellers List than Fiction books; {len(nonfiction_books)} Nonfiction books compared to {len(fiction_books)} Fiction books.')
 
@@ -60,13 +64,15 @@ def analysis_three(book_list):
         if result_counts > top_book['count']:
             top_book['count'] = result_counts
             top_book['title'] = unique_book_title
-    print(f"The Top Book in the book list is: {top_book['title']}, and it has been listed {top_book['count']} times.")
+    print(f"\nThe Top Book in the book list is: {top_book['title']}, and it has been listed {top_book['count']} times.")
 
 # BONUS USER STORIES:
 
 def bonus_analysis_one(book_list):
     print("Analysis of which author has shown up on the book list the most (Distinct books only!)")
-
+    list_of_authors = [book['author'] for book in book_list]
+    for author in list_of_authors:
+        print(author)
 
 def bonus_analysis_two(book_list):
     print("Analysis of the top book for each year, based on the book's user ratings and number of reviews")
@@ -76,3 +82,4 @@ def bonus_analysis_three(book_list):
     print("Analysis of which book has appeared the most consecutively on the book list")
 
 run_analysis(data_list)
+# bonus_analysis_one(data_list)
